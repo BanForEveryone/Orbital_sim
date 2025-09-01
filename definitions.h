@@ -5,10 +5,10 @@
 struct MissileParams {
     float MASS;
 
-    float PERP_SPEED;
+    float POLAR_SPEED;
     float THETA;
 
-    float CENTRAL_SPEED;
+    float RADIAL_SPEED;
     float HEIGHT;
 
     float AZI_SPEED;
@@ -25,11 +25,11 @@ struct EarthParams {
 void sim_step_euler(struct MissileParams *params, struct EarthParams earth_params) {
 
     ///for central 
-    params->CENTRAL_SPEED = params->CENTRAL_SPEED + earth_params.TIMESTEP * (-9.81);
-    params->HEIGHT = params->HEIGHT + earth_params.TIMESTEP * params->CENTRAL_SPEED;
+    params->RADIAL_SPEED = params->RADIAL_SPEED + earth_params.TIMESTEP * (-9.81);
+    params->HEIGHT = params->HEIGHT + earth_params.TIMESTEP * params->RADIAL_SPEED;
     
     ///for perp 
-    float theta_ang_speed = params->PERP_SPEED / params->HEIGHT;
+    float theta_ang_speed = params->POLAR_SPEED / params->HEIGHT;
     params->THETA = params->THETA + theta_ang_speed * earth_params.TIMESTEP;
 
     ///for azi
@@ -37,6 +37,13 @@ void sim_step_euler(struct MissileParams *params, struct EarthParams earth_param
     params->PHI = params->PHI + phi_ang_speed * earth_params.TIMESTEP;
 
 };
+
+void sim_step_rk4(struct MissileParams *params, struct EarthParams earth_params) {
+    
+
+
+
+}
 
 struct MissileParams *simulate(struct MissileParams *missile_params, float time, struct EarthParams earth_params) {
     

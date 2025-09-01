@@ -17,9 +17,9 @@ int main() {
     current_missile_params.PHI = 0.5;
     current_missile_params.THETA = 0.5;
 
-    current_missile_params.CENTRAL_SPEED = 0;
+    current_missile_params.RADIAL_SPEED = 0;
     current_missile_params.AZI_SPEED = 0;
-    current_missile_params.PERP_SPEED = 220000;
+    current_missile_params.POLAR_SPEED = 220000;
 
     current_missile_params.MASS = 200;
     
@@ -38,12 +38,12 @@ int main() {
 
     FILE *fptr = fopen("results.txt", "a");
     
-    fprintf(fptr, "HEIGHT;THETA;PHI;CENTRAL_SPEED;PERP_SPEED;AZI_SPEED \n");
+    fprintf(fptr, "HEIGHT;THETA;PHI;RADIAL_SPEED;POLAR_SPEED;AZI_SPEED \n");
 
     for(int i=1;i<timestep_count;i++) {
 
         
-        fprintf(fptr,"%f;%f;%f;%f;%f;%f\n", ptr->HEIGHT,ptr->THETA,ptr->PHI, ptr->CENTRAL_SPEED, ptr->PERP_SPEED,ptr->AZI_SPEED);
+        fprintf(fptr,"%f;%f;%f;%f;%f;%f\n", ptr->HEIGHT,ptr->THETA,ptr->PHI, ptr->RADIAL_SPEED, ptr->POLAR_SPEED,ptr->AZI_SPEED);
         ptr++;
     }
     fclose(fptr);
