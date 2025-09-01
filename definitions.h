@@ -56,7 +56,7 @@ struct MissileParams *simulate(struct MissileParams *missile_params, float time,
 
     while (current_step<timestep_count)
     {
-        sim_step(missile_params, earth_params);
+        sim_step_euler(missile_params, earth_params);
         *current_result = *missile_params;
 
         current_result++;
