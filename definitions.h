@@ -22,7 +22,7 @@ struct EarthParams {
     float TIMESTEP;
 }; 
 
-void sim_step(struct MissileParams *params, struct EarthParams earth_params) {
+void sim_step_euler(struct MissileParams *params, struct EarthParams earth_params) {
 
     ///for central 
     params->CENTRAL_SPEED = params->CENTRAL_SPEED + earth_params.TIMESTEP * (-9.81);
