@@ -6,7 +6,7 @@ raw_data = np.genfromtxt("results.txt", delimiter=";", names=True)
 
 #create a second array, with x,y,z coordinates
 
-new_data = np.zeros(shape=(50000,3))
+new_data = np.zeros(shape=(5000000,3))
 
 
 for index,item in enumerate(raw_data["HEIGHT"]):
@@ -16,6 +16,6 @@ for index,item in enumerate(raw_data["HEIGHT"]):
 
 plt = pv.Plotter()
 
-plt.add_mesh(new_data)
+plt.add_mesh(new_data[::1000])
 plt.add_mesh(pv.Sphere(radius=6370e3))
 plt.show()
